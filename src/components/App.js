@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { gettext } from '../actions';
-import Arena from './Arena';
 import RandomTextCard from './RandomTextCard';
 import Typography from '@material-ui/core/Typography';
+import TextArena from './TextArena';
 
 class App extends Component {
 
@@ -31,13 +31,13 @@ class App extends Component {
   render() {
     if(this.props.randomtext[0]){
       return (
-        <div className="container-fluid bg-light h-50 pt-5 px-5">
+        <div className="container-fluid bg-dark h-50 pt-5 px-5">
             <RandomTextCard>
                 <Typography variant="title">
                 {this.processText()}
                 </Typography>
             </RandomTextCard>
-              <Arena randomText={this.text}/>
+              <TextArena randomText={this.text}/>
         </div>
       );
     } else {
