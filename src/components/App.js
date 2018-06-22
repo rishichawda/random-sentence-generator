@@ -31,13 +31,12 @@ class App extends Component {
   render() {
     if(this.props.randomtext[0]){
       return (
-        <div className="container bg-light h-50">
-            <RandomTextCard randomText={this.text}>
+        <div className="container-fluid bg-light h-50 pt-5 px-5">
+            <RandomTextCard>
                 <Typography variant="title">
                 {this.processText()}
                 </Typography>
             </RandomTextCard>
-            <p className="lead">Type here : </p>
               <Arena randomText={this.text}/>
         </div>
       );

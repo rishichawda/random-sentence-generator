@@ -67,7 +67,8 @@ class Arena extends Component {
       var seconds = (this.state.totaltime%60) < 0 ? 0 : this.state.totaltime%60;
       var words_perminute = (Math.round(this.text.length/(this.state.totaltime/60)))
       return (
-        <div>
+        <div className="mt-5">
+          <p className="lead">Type here : </p>
         <textarea className="w-100" style={textstyle} onChange={this.handleChange}></textarea>
         { this.state.totaltime!==0 &&
           <div className="alert alert-success" role="alert">
