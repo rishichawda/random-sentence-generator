@@ -38,7 +38,7 @@ class App extends Component {
   handleChange(e) {
     if(!this.started) {
       this.started = true;
-      this.starttime = new Date().getSeconds();
+      this.starttime = new Date().getTime();
     }
     var words = e.target.value.split(' ');
     var last_word = words[words.length-2];
@@ -68,7 +68,7 @@ class App extends Component {
         && this.correctinput[this.correctinput.length-1]===this.text[this.text.length-1] && this.state.totaltime===0) {
           // All words have been correctly typed. Store total time in seconds and set completed flag to true.
       this.setState({
-        totaltime: new Date().getSeconds() - this.starttime,
+        totaltime: Math.round((new Date().getTime() - this.starttime)/1000),
         completed: true
       })
     }
@@ -80,7 +80,7 @@ class App extends Component {
 
   render() {
     var minutes = (Math.floor(this.state.totaltime/60) < 0) ? 0 : Math.floor(this.state.totaltime/60);
-    var seconds = (Math.floor(this.state.totaltime%60) < 0) ? 0 : Math.floor(this.state.totaltime%60);
+    var seconds = (this.state.totaltime%60) < 0 ? 0 : this.state.totaltime%60;
     var words_perminute = (Math.round(this.text.length/(this.state.totaltime/60)))
     if(this.props.randomtext[0]){
       return (
