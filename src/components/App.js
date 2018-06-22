@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { gettext } from '../actions';
-import Arena from './arena';
+import Arena from './Arena';
+import RandomTextCard from './RandomTextCard';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
 
@@ -19,7 +21,7 @@ class App extends Component {
     );
     string = string.splice(1,string.length);
     this.text = string.join(' ').split(' ');
-    return <p>{string.join(' ')}</p>
+    return string.join(' ')
   }
 
   componentWillMount() {
@@ -30,8 +32,11 @@ class App extends Component {
     if(this.props.randomtext[0]){
       return (
         <div className="container bg-light h-50">
-            <p className="lead">Random Text : </p>
-            {this.processText()}
+            <RandomTextCard randomText={this.text}>
+                <Typography variant="title">
+                {this.processText()}
+                </Typography>
+            </RandomTextCard>
             <p className="lead">Type here : </p>
               <Arena randomText={this.text}/>
         </div>
