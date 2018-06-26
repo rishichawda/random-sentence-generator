@@ -21,6 +21,11 @@ class TextArena extends Component {
     componentWillReceiveProps(props) {
       if(this.text !== props.randomText) {
         this.text = props.randomText;
+        this.started = false;
+        this.setState({
+          totaltime: 0,
+          completed: false
+        })
       }
     }
 
