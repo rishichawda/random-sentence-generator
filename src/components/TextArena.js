@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
+import styles from './styles/styles';
 
 
-const textstyle = {
-  border: 'none',
-  minHeight: '25vh'
-}
-
-
-class Arena extends Component {
+class TextArena extends Component {
 
     constructor(props) {
       super(props);
@@ -21,6 +16,12 @@ class Arena extends Component {
       this.handleChange = this.handleChange.bind(this);
       // Array to store correct input words typed by user.
       this.correctinput = [];
+    }
+
+    componentWillReceiveProps(props) {
+      if(this.text !== props.randomText) {
+        this.text = props.randomText;
+      }
     }
 
     handleChange(e) {
@@ -69,7 +70,7 @@ class Arena extends Component {
       return (
         <div className="mt-5">
           <p className="lead">Type here : </p>
-        <textarea className="w-100" style={textstyle} onChange={this.handleChange}></textarea>
+        <textarea className="w-100" style={styles.textstyle} onChange={this.handleChange} ref={this.props.textRef}></textarea>
         { this.state.totaltime!==0 &&
           <div className="alert alert-success" role="alert">
             <p>Completed! Your total time was <strong>{minutes} minutes and {seconds} seconds</strong></p>
@@ -81,4 +82,4 @@ class Arena extends Component {
     }
 }
 
-export default Arena;
+export default TextArena;

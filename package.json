@@ -5,6 +5,7 @@
   "homepage": "https://rishichawda.github.io/simple-typeracer",
   "dependencies": {
     "@material-ui/core": "^1.2.3",
+    "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "react": "^16.4.1",
