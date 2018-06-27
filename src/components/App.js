@@ -13,9 +13,6 @@ class App extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      text: []
-    }
     this.textarearef = createRef();
   }
 
@@ -26,7 +23,6 @@ class App extends Component {
       }
     );
     string = string.splice(1,string.length);
-    this.text = string.join(' ').split(' ');
     return string.join(' ')
   }
 

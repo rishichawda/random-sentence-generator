@@ -1,4 +1,3 @@
-
 const styles = {
     textstyle : {
        border: 'none',
@@ -20,6 +19,10 @@ const styles = {
       pos: {
         marginBottom: 12,
       },
+    },
+    progressbarStyles: {
+      height: '200%',
+      margin: '-1em 0 0 -2rem'
     }
 }
 

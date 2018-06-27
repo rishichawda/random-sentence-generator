@@ -1,5 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import styles from './styles/styles';
+import carImage from '../assets/car.png'; 
+
+function ProgressBar(props) { 
+  return (
+    <div className="progress" style={{overflow: 'visible'}}>
+      <div ref={props.ProgressRef} className="progress-bar bg-success" style={{width: '0%'}} role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      {/* <span style={styles.progressbarStyles} >
+      </span> */}
+        <img src={carImage} style={styles.progressbarStyles} alt="car-progress-image" />
+    </div>
+  )
+ }
 
 
 class TextArena extends Component {
@@ -16,6 +28,8 @@ class TextArena extends Component {
       this.handleChange = this.handleChange.bind(this);
       // Array to store correct input words typed by user.
       this.correctinput = [];
+      this.progressbar = createRef();
+      this.progressCounter = 100.0 / this.text.length;
     }
 
     componentWillReceiveProps(props) {
@@ -25,7 +39,7 @@ class TextArena extends Component {
         this.setState({
           totaltime: 0,
           completed: false
-        })
+        });
       }
     }
 
@@ -50,13 +64,14 @@ class TextArena extends Component {
               } else {
                 // Last input word matches the word from random text at that particular index.
                 this.correctinput = words.splice(0,words.length-1);
+                this.progressbar.current.style.width = (this.progressCounter * this.correctinput.length) + '%';
               }
             } 
             // Update textarea input. removes last incorrect word.
             e.target.value = this.correctinput.join(' ') + ' ';
           } 
-          } else { 
-            this.correctinput = words.splice(0,words.length);
+        } else { 
+          this.correctinput = words.splice(0,words.length);
           }
         if((this.correctinput.length===this.text.length)
             && this.correctinput[this.correctinput.length-1]===this.text[this.text.length-1] && this.state.totaltime===0) {
@@ -74,8 +89,12 @@ class TextArena extends Component {
       var words_perminute = (Math.round(this.text.length/(this.state.totaltime/60)))
       return (
         <div className="mt-5">
-          <p className="lead">Type here : </p>
+        <p className="lead">Type here : </p>
         <textarea className="w-100" style={styles.textstyle} onChange={this.handleChange} ref={this.props.textRef}></textarea>
+        {
+          this.state.totaltime===0 && 
+          <ProgressBar ProgressRef={this.progressbar} />
+        }
         { this.state.totaltime!==0 &&
           <div className="alert alert-success" role="alert">
             <p>Completed! Your total time was <strong>{minutes} minutes and {seconds} seconds</strong></p>
