@@ -6,8 +6,6 @@ function ProgressBar(props) {
   return (
     <div className="progress" style={{overflow: 'visible'}}>
       <div ref={props.ProgressRef} className="progress-bar bg-success" style={{width: '0%'}} role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-      {/* <span style={styles.progressbarStyles} >
-      </span> */}
         <img src={carImage} style={styles.progressbarStyles} alt="car-progress-image" />
     </div>
   )
@@ -64,7 +62,6 @@ class TextArena extends Component {
               } else {
                 // Last input word matches the word from random text at that particular index.
                 this.correctinput = words.splice(0,words.length-1);
-                this.progressbar.current.style.width = (this.progressCounter * this.correctinput.length) + '%';
               }
             } 
             // Update textarea input. removes last incorrect word.
@@ -72,15 +69,16 @@ class TextArena extends Component {
           } 
         } else { 
           this.correctinput = words.splice(0,words.length);
-          }
+        }
         if((this.correctinput.length===this.text.length)
-            && this.correctinput[this.correctinput.length-1]===this.text[this.text.length-1] && this.state.totaltime===0) {
-              // All words have been correctly typed. Store total time in seconds and set completed flag to true.
+        && this.correctinput[this.correctinput.length-1]===this.text[this.text.length-1] && this.state.totaltime===0) {
+          // All words have been correctly typed. Store total time in seconds and set completed flag to true.
           this.setState({
             totaltime: Math.round((new Date().getTime() - this.starttime)/1000),
             completed: true
           })
         }
+        this.progressbar.current.style.width = (this.progressCounter * this.correctinput.length) + '%';
       }
       
     render () {
