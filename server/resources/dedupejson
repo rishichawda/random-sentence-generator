@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Removes duplicate lines and overwrites the files. A backup is made of the original file.
+perl -i.bak -ne 'print $_ unless $a{$_}++ '  *.json
+# Remove backups
+rm *.bak
