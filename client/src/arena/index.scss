@@ -38,10 +38,13 @@
     margin-top: 1.6em;
     color: black;
     padding: 0 2em;
+    width: 100%;
     line-height: 1.6em;
     font-size: 1.1em;
     font-weight: 400;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .results {
       margin-top: 2em;
@@ -94,10 +97,42 @@
       }
     }
 
+    .loader {
+      display: inline-block;
+      margin-top: 5em;
+      align-self: center;
+      justify-self: center;
+      width: 64px;
+      height: 64px;
+    }
+
+    .loader:after {
+      content: " ";
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid rgba(180, 241, 241, 0.678);
+      will-change: transform;
+      border-color: rgba(180, 241, 241, 0.678) transparent rgba(180, 241, 241, 0.678) transparent;
+      animation: loadinganim 1.2s linear infinite;
+    }
+
+    @keyframes loadinganim {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     .generated-text {
       border: 1px solid rgba(153, 151, 151, 0.7);
       padding: 1em;
-      width: 100%;
+      min-width: 100%;
       box-sizing: border-box;
       border-radius: 3.8px;
       margin: auto;

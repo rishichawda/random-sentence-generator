@@ -19,7 +19,9 @@ export default class Arena extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    setTimeout(() => {
+      this.fetchData();
+    }, 2000);
   }
 
   componentWillUnmount() {
@@ -91,7 +93,7 @@ export default class Arena extends Component {
     }
     if (text.length === progress.length) {
       clearInterval(this.watch);
-      document.removeEventListener("keydown");
+      document.removeEventListener("keydown", this.registerKeyDown);
       const { timeElapsed } = this.state;
       this.setState({
         showResults: true,
@@ -135,7 +137,8 @@ export default class Arena extends Component {
               ? `${timer === 0 ? "Let's go!!" : `${timer} seconds to start!`}`
               : "Fetching text.."}
           </div>
-          <div className="generated-text">{this.generateText() || ""}</div>
+          {text.length ? <div className="generated-text">{this.generateText()}</div>
+            : <div className="loader" />}
           {!showResults ? (
             <div className="current-word">
               {current && this.generateCurrent(current)}
@@ -143,7 +146,7 @@ export default class Arena extends Component {
           ) : (
             <div className="results">
               <h4>Results</h4>
-              <p>{`Total time : ${minutes} : ${seconds}`}</p>
+              <p>{`Total time : ${minutes} minutes, ${seconds} seconds`}</p>
               <p>{`Speed : ${wpm} words per minute`}</p>
             </div>
           )}
