@@ -1,6 +1,7 @@
 const express = require('express')
 const http = require('http')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const logger = require('morgan')
 const routes = require('./routes')
 
@@ -10,7 +11,8 @@ const app = express()
 
 app.set('port', PORT)
 
-app.use(bodyParser())
+app.use(cors())
+app.use(bodyParser.json({ type: '*/*' }));
 
 if ('development' == app.get('env')) {
   app.use(logger())
