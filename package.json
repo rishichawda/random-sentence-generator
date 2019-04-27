@@ -1,0 +1,21 @@
+{
+  "name": "simple-typeracer",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": {
+    "name": "rishichawda",
+    "url": "https://rishichawda.now.sh"
+  },
+  "scripts": {
+    "server-dev": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "randy": "^1.5.1",
+    "sentencer": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "license": "MIT"
+}
