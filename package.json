@@ -9,7 +9,8 @@
   "scripts": {
     "server-dev": "cd server && nodemon index.js",
     "dev": "concurrently \"cd server && nodemon index.js\" \"cd client && npm run start\"",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "deploy-client": "cd client && now"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
