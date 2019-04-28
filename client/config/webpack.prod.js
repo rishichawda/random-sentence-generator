@@ -1,8 +1,9 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const merge = require('webpack-merge')
+const path = require('path');
 const common = require('./webpack.common.js')
-
+const Dotenv = require('dotenv-webpack')
 
 // Splitchunks configuration.
 const splitChunks = {
@@ -29,6 +30,9 @@ module.exports = merge(common, {
             inline: false
           }
         }
+      }),
+       new Dotenv({
+        path: path.resolve(process.cwd(), 'config/.env'),
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
