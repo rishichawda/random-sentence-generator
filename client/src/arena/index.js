@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   typeState: [],
   progress: [],
   timeElapsed: 0,
-  showResults: false
+  showResults: false,
+  current: '',
 };
 
 export default class Arena extends Component {
