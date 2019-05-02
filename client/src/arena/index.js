@@ -22,9 +22,7 @@ export default class Arena extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.fetchData();
-    }, 2000);
+    this.fetchData();
   }
 
   componentWillUnmount() {
@@ -46,6 +44,8 @@ export default class Arena extends Component {
           this.setState(prev => ({ timer: prev.timer - 1 }));
         }
       }, 1000);
+    }).catch(() => {
+      this.fetchData();
     });
   };
 
