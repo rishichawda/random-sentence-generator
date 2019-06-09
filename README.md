@@ -1,3 +1,3 @@
-### [typerace.now.sh](https://typerace.now.sh)
+### [Simple Typeracer](https://typerace.rishikc.com)
 
 ![screenshot](.github/screenshot.png)
