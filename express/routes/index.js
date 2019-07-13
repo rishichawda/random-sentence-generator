@@ -4,7 +4,7 @@ const Readable = require('stream').Readable
 const stemplates = require('../resources/stemplates.json');
 const phrases = require('../resources/phrases.json');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
   app.get('/text/', function (req, res) {
     const numberOfSentences = req.body.size || randy.randInt(5,10)

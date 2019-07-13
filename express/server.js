@@ -1,5 +1,4 @@
 const express = require('express')
-const http = require('http')
 const serverless = require("serverless-http");
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -22,11 +21,11 @@ if ('development' == app.get('env')) {
   app.use(logger())
 }
 
-routes(app)
-
-module.exports.handler = serverless(app);
+routes(router)
 
 // Start server on port.
-http.createServer(app).listen(PORT, function(){
+app.listen(PORT, function(){
   console.log('Express server listening on port ' + PORT)
 })
+
+module.exports.handler = serverless(app);
