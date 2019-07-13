@@ -1,16 +1,15 @@
 {
   "name": "simple-typeracer",
   "version": "0.0.1",
-  "main": "app.js",
+  "main": "functions/server.js",
   "author": {
     "name": "rishichawda",
     "url": "https://rishichawda.now.sh"
   },
   "scripts": {
-    "server-dev": "cd server && nodemon index.js",
-    "dev": "concurrently \"cd server && nodemon index.js\" \"cd client && npm run start\"",
-    "start": "node server/index.js",
-    "deploy-client": "cd client && now"
+    "dev": "concurrently \"cd server && nodemon index.js\" \"cd client && yarn dev:server\"",
+    "build:server": "netlify-lambda build express",
+    "dev:server": "nodemon server/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -23,7 +22,9 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.11"
+    "netlify-lambda": "^1.5.0",
+    "nodemon": "^1.18.11",
+    "serverless-http": "^2.0.2"
   },
   "license": "MIT"
 }
