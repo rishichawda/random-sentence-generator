@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./index.scss";
 
-const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_URL : 'http://localhost:3000'
+const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_URL : 'http://localhost:9000'
 
 const INITIAL_STATE = {
   text: "",
@@ -31,7 +31,7 @@ export default class Arena extends Component {
 
   fetchData = () => {
     const { pos } = this.state;
-    const res = axios.get(`${baseUrl}/text`);
+    const res = axios.get(baseUrl);
     res.then(({ data: { text } }) => {
       this.setState({ text, current: text.split(" ")[pos] });
       this.timer = setInterval(() => {
