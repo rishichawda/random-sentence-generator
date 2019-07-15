@@ -1,4 +1,3 @@
-### [Simple Typeracer](https://typeracing.rishikc.com) &nbsp;&nbsp; [![Netlify Status](https://api.netlify.com/api/v1/badges/67dd339c-731a-4245-ad78-17117a3ccf81/deploy-status)](https://app.netlify.com/sites/typeracing/deploys)
+### Random Sentence API
 
-
-![screenshot](.github/screenshot.png)
+Used in [Simple Typeracer](https://github.com/rishichawda/simple-typeracer) for generating short paragraphs with random sentences. 
