@@ -15,13 +15,15 @@ app.set('port', PORT)
 
 app.use(cors())
 app.use(bodyParser.json({ type: '*/*' }));
-app.use("/.netlify/functions/server", router);
 
 if ('development' == app.get('env')) {
-  app.use(logger())
+  app.use(logger());
+  routes(app);
+} else {
+  app.use("/.netlify/functions/server", router);
+  routes(router);
 }
 
-routes(router)
 
 // Start server on port.
 app.listen(PORT, function(){

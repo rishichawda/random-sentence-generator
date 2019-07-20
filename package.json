@@ -7,9 +7,8 @@
     "url": "https://rishichawda.now.sh"
   },
   "scripts": {
-    "dev": "concurrently \"cd server && nodemon index.js\" \"cd client && yarn dev:server\"",
     "build:server": "netlify-lambda build express",
-    "dev:server": "nodemon server/index.js"
+    "dev:server": "nodemon express/server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
